@@ -1,0 +1,37 @@
+<div
+  [ngClass]="{ 'no-scroll': checked }"
+  (wheel)="preventScroll($event)"
+  (touchmove)="preventTouchScroll($event)"
+>
+  <div class="menu-icon">
+    <input
+      class="menu-icon__checkbox"
+      type="checkbox"
+      [ngModel]="checked"
+      (click)="showOrHideMenu()"
+    />
+    <div>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<div class="menu-items" *ngIf="checked" [class.open]="isOpen">
+  <div class="list-items">
+    <a
+      routerLink="/portfolio"
+      routerLinkActive="active"
+      (click)="showOrHideMenu()"
+      >Portfolio</a
+    >
+    <a href="/portfolio#contact" (click)="showOrHideMenu()">Kontakt</a>
+  </div>
+  <a
+    href="https://www.instagram.com/matmakowski1/"
+    id="ig-icon"
+    target="_blank"
+  >
+    <img src="assets/instagram.svg" alt="instagram" class="social-icon" />
+  </a>
+</div>

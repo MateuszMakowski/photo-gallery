@@ -1,0 +1,64 @@
+.row {
+  padding: 1.5em 2em 0.5em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.navigation {
+  padding-top: 0.5em;
+  gap: 1em;
+  display: flex;
+  flex: 1;
+  text-align: left;
+}
+
+.navigation p {
+  position: relative;
+}
+
+.navigation p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.navigation p:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.logo {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.social-accounts {
+  padding-bottom: 0.5em;
+  flex: 1;
+  text-align: right;
+}
+
+@media (max-width: 631px) {
+  .navigation {
+    display: none;
+  }
+
+  .social-accounts {
+    flex: 0;
+  }
+}

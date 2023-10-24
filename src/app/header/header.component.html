@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="navigation">
+    <p><a routerLink="/portfolio" routerLinkActive="active">Portfolio</a></p>
+    <p><a href="/portfolio#contact">Kontakt</a></p>
+  </div>
+  <div class="logo">
+    <h3><a routerLink="/portfolio">Mateusz Makowski</a></h3>
+  </div>
+  <div class="social-accounts">
+    <a
+      href="https://www.instagram.com/matmakowski1/"
+      *ngIf="innerWidth > 631"
+      target="_blank"
+    >
+      <img src="assets/instagram.svg" alt="instagram" class="social-icon" />
+    </a>
+    <app-hamburger *ngIf="innerWidth <= 631"></app-hamburger>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div>
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-6" *ngIf="filteredImages[0]">
+      <div *ngFor="let img of filteredImages[0]">
+        <img
+          *ngIf="loadCount + 8 >= img.Index"
+          src="{{ img.Link }}"
+          class="w-100 shadow-1-strong"
+          loading="lazy"
+          alt="{{ img.Alt }}"
+          (load)="onImageLoad(img)"
+          [ngClass]="img.IsLoaded ? 'custom-animation' : 'not-loaded-yet'"
+          (click)="openImageModal(img.Index)"
+        />
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-6" *ngIf="filteredImages[1]">
+      <div *ngFor="let img of filteredImages[1]">
+        <img
+          *ngIf="loadCount + 8 >= img.Index"
+          src="{{ img.Link }}"
+          class="w-100 shadow-1-strong"
+          loading="lazy"
+          alt="{{ img.Alt }}"
+          (load)="onImageLoad(img)"
+          [ngClass]="img.IsLoaded ? 'custom-animation' : 'not-loaded-yet'"
+          (click)="openImageModal(img.Index)"
+        />
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-6" *ngIf="filteredImages[2]">
+      <div *ngFor="let img of filteredImages[2]">
+        <img
+          *ngIf="loadCount + 8 >= img.Index"
+          src="{{ img.Link }}"
+          class="w-100 shadow-1-strong"
+          loading="lazy"
+          alt="{{ img.Alt }}"
+          (load)="onImageLoad(img)"
+          [ngClass]="img.IsLoaded ? 'custom-animation' : 'not-loaded-yet'"
+          (click)="openImageModal(img.Index)"
+        />
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-6" *ngIf="filteredImages[3]">
+      <div *ngFor="let img of filteredImages[3]">
+        <img
+          *ngIf="loadCount + 8 >= img.Index"
+          src="{{ img.Link }}"
+          class="w-100 shadow-1-strong"
+          loading="lazy"
+          alt="{{ img.Alt }}"
+          (load)="onImageLoad(img)"
+          [ngClass]="img.IsLoaded ? 'custom-animation' : 'not-loaded-yet'"
+          (click)="openImageModal(img.Index)"
+        />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loadMore" class="load-more">
+    <button (click)="loadMoreClicked()">Więcej</button>
+    <!-- Zawartość strony -->
+  </div>
+  <div
+    #fullImageView
+    id="full-image-view"
+    *ngIf="fullScreen"
+    (keydown.ArrowLeft)="changeImgToPrevious(fullScreenImg.Index)"
+    (keydown.ArrowRight)="changeImgToNext(fullScreenImg.Index)"
+    (keydown.escape)="closeImageModal()"
+    tabindex="0"
+  >
+    <img
+      id="full-image"
+      src="{{ fullScreenImg.Link }}"
+      class="w-100 shadow-1-strong full-screen"
+      loading="lazy"
+      alt="{{ fullScreenImg.Alt }}"
+      (load)="onImageLoad(fullScreenImg)"
+      [ngClass]="fullScreenImg.IsLoaded ? 'custom-animation' : 'not-loaded-yet'"
+    />
+    <span id="close-btn" (click)="closeImageModal()">&times;</span>
+    <br *ngIf="innerWidth <= 631" />
+    <img
+      *ngIf="fullScreenImg.Index > 0"
+      src="assets/arrow-left.svg"
+      alt="arrow left"
+      class="full-arrow"
+      id="full-arrow-left"
+      (click)="changeImgToPrevious(fullScreenImg.Index)"
+    />
+    <img
+      *ngIf="fullScreenImg.Index < this.images.length - 1"
+      src="assets/arrow-right.svg"
+      alt="arrow right"
+      class="full-arrow"
+      id="full-arrow-right"
+      (click)="changeImgToNext(fullScreenImg.Index)"
+    />
+  </div>
+</div>
